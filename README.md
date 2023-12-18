@@ -12,12 +12,14 @@ Go directly on [Windmill Hub](https://hub.windmill.dev/), create your script, we
 
 ## Contributing a whole collection of scripts for a specific integration
 
-Follow the guide below to generate scripts for a given integration.
-Once you're done, you have to test at least one of the generated script.
+1. Follow the guide below to generate scripts for a given integration.
+2. Once you're done, you have to test at least one of the generated script.
 You might need to create an account to get credentials.
 You can find a template for the test file in the template folder.
-Once you've checked that it worked, create a PR with all the generated scripts, the resource type definition and the test file (DO NOT INCLUDE the actual test credentials) in the correct folder. 
-The PR has to include a video of the test running and working.
+3. You should set the description of the resource type (`*.resource-type.json` file) with instructions on how to get the credentials.
+4. Once you've checked that it worked, create a PR with all the generated scripts, the resource type definition and the test file (DO NOT INCLUDE the test credentials) in the correct folder. 
+In the PR description, you should include a description of the integration and a link to the documentation.
+The PR also has to include a video of the test running and working.
 
 ### From an OpenAPI spec
 
@@ -25,10 +27,10 @@ We have published a [CLI (bun only)](https://www.npmjs.com/package/@windmill-lab
 
 Minimal example:
 ```
-bunx @windmill-labs/openapi-codegen-cli --hub --schemaUrl "urlOrLocalOpenApiSpecInJsonOrYaml" --outputDir "./integrationName" --resourceTypeName "integrationName"
+bunx @windmill-labs/openapi-codegen-cli --hub --schemaUrl "urlOrLocalOpenApiSpecInJsonOrYaml" --outputDir "./integration_name" --resourceTypeName "IntegrationName" --pretty
 ```
 
-The --hub option is necessary to make sure the generated content is in the right format to be uploaded on the hub. The outputDir and the resourceTypeName have to be set as the name of the integration in lowercase and with the spaces replaced by `_`.
+The --hub option is necessary to make sure the generated content is in the right format to be uploaded on the hub. The outputDir has to be the integration name in snake case and the resourceTypeName will be automatically converted to pascal case.
 
 The CLI allows you to customise the scripts generated according to the authorisation system of the integration API. You can see all the available options below.
 
@@ -61,7 +63,7 @@ For basic authentication, pass the `--authKind basic` flag. By default, it will 
 
 **Query auth**
 
-For query authentication, pass the `--authKind query` flag. By default, it will add a token property on the resource type and pass the token as a query parameter named "token". Setting tokenName will change the name of the token property as well as the name of the query parameter.
+For query authentication, pass the `--authKind query` flag. By default, it will add a token property on the resource type and pass the token as a query parameter named "token". Setting tokenName will change the name of the token property as well as the name of the query parameter. A key property will also be added to the resource types and passed as a query parameter named "key".
 
 **Header auth**
 

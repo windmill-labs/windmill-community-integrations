@@ -1,0 +1,16 @@
+{
+  "description": "The resource type description",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "token": {
+        "type": "string",
+        "description": "The token to be used for authentication"
+      }
+    },
+    "required": [
+      "token"
+    ]
+  }
+}
