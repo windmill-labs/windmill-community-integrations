@@ -1,0 +1,14 @@
+{
+  "name": "windmill-community-integrations",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "yaml": "^2.3.4"
+  }
+}

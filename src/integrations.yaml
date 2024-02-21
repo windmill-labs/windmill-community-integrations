@@ -1,0 +1,108 @@
+- description: Creates a bill. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/bill#create-a-bill)
+  id: create-bill
+  integration: quickbooks
+  name: Create Bill
+- description: Creates a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#create-a-customer)
+  id: create-customer
+  integration: quickbooks
+  name: Create Customer
+- description: Creates an invoice. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#create-an-invoice)
+  id: create-invoice
+  integration: quickbooks
+  name: Create Invoice
+- description: Creates a payment. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/payment#create-a-payment)
+  id: create-payment
+  integration: quickbooks
+  name: Create Payment
+- description: Creates a new purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#create-a-purchase)
+  id: create-purchase
+  integration: quickbooks
+  name: Create Purchase
+- description: Creates a sales receipt. [See the documentation](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/salesreceipt#create-a-salesreceipt)
+  id: create-sales-receipt
+  integration: quickbooks
+  name: Create Sales Receipt
+- description: Delete a specific purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#delete-a-purchase)
+  id: delete-purchase
+  integration: quickbooks
+  name: Delete Purchase
+- description: Returns info about a bill. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/bill#read-a-bill)
+  id: get-bill
+  integration: quickbooks
+  name: Get Bill
+- description: Returns info about a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/most-commonly-used/customer#read-a-customer)
+  id: get-customer
+  integration: quickbooks
+  name: Get Customer
+- description: Returns info about an invoice. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#read-an-invoice)
+  id: get-invoice
+  integration: quickbooks
+  name: Get Invoice
+- description: Gets info about a company. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/companyinfo)
+  id: get-my-company
+  integration: quickbooks
+  name: Get My Company
+- description: Returns details about a purchase order. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchaseorder#read-a-purchase-order)
+  id: get-purchase-order
+  integration: quickbooks
+  name: Get Purchase Order
+- description: Returns info about a purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#read-a-purchase)
+  id: get-purchase
+  integration: quickbooks
+  name: Get Purchase
+- description: Returns details about a sales receipt. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/salesreceipt#read-a-salesreceipt)
+  id: get-sales-receipt
+  integration: quickbooks
+  name: Get Sales Receipt
+- description: Returns info about an activity. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/timeactivity#read-a-timeactivity-object)
+  id: get-time-activity
+  integration: quickbooks
+  name: Get Time Activity
+- description: Searches for invoices. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#query-an-invoice)
+  id: sandbox-search-invoices
+  integration: quickbooks
+  name: Search Invoices
+- description: Search for accounts. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account#query-an-account)
+  id: search-accounts
+  integration: quickbooks
+  name: Search Accounts
+- description: Searches for customers. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#query-a-customer)
+  id: search-customers
+  integration: quickbooks
+  name: Search Customers
+- description: Searches for items. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/item#query-an-item)
+  id: search-items
+  integration: quickbooks
+  name: Search Items
+- description: Search for products. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/item#query-an-item)
+  id: search-products
+  integration: quickbooks
+  name: Search Products
+- description: Searches for purchases. [See the documentation](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#query-a-purchase)
+  id: search-purchases
+  integration: quickbooks
+  name: Search Purchases
+- description: Performs a search query against a Quickbooks entity. [See docs here](https://developer.intuit.com/app/develophttps://developer.intuit.com/app/developer/qbo/docs/develop/explore-the-quickbooks-online-api/data-queries)
+  id: search-query
+  integration: quickbooks
+  name: Search Query
+- description: Searches for time activities. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/timeactivity#query-a-timeactivity-object)
+  id: search-time-activities
+  integration: quickbooks
+  name: Search Time Activities
+- description: Searches for vendors. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/vendor#query-a-vendor)
+  id: search-vendors
+  integration: quickbooks
+  name: Search Vendors
+- description:
+    "Sparse updating provides the ability to update a subset of properties\
+    \ for a given object; only elements specified in the request are updated. Missing\
+    \ elements are left untouched. The ID of the object to update is specified in\
+    \ the request body.\u200B [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#sparse-update-an-invoice)"
+  id: sparse-update-invoice
+  integration: quickbooks
+  name: Sparse Update Invoice
+- description: Updates a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#full-update-a-customer)
+  id: update-customer
+  integration: quickbooks
+  name: Update Customer
