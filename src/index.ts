@@ -38,12 +38,18 @@ import { main } from "./script.bun.ts";
 import { resource } from "../resource.ts";
 
 test("{actionName}", async () => {
+  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
+
+  console.log("TEST: Will test {actionName} with arguments: " /* arguments */)
+
   // any setup code here
 
   // calling main
-  const response = await main(resource, /* other parameters */);
+  console.log("TEST: Running main function");
+  const response = await main(resource, /* script arguments */);
 
   // assertions here
+  // test the response of the main function as well as the side effects of the action directly on the service
 });
 `;
 
@@ -76,17 +82,40 @@ async function createBoilerplate(integrationName: string, actions: Action[]) {
 
   Bun.write(
     integrationPath + "/README.md",
-    `# ${integrationNamePascal} Integration\n\nWrite the steps to retrieve the credentials for the tests`
+    `# ${integrationNamePascal} Integration\n\n## Environment variables and credentials setup`
   );
   Bun.write(
     integrationPath + "/resource.ts",
     `export const resource = {
-  // put your credentials here
+  // put your credentials here from the .env file (Bun.env.VARIABLE_NAME!)
 }`
   );
-  Bun.write(integrationPath + "/resource-type.json", RT_TEMPLATE);
+  Bun.write(integrationPath + "/resource_type.json", RT_TEMPLATE);
 
-  await $`cd integrations/${integrationName} && bun init`.quiet();
+  Bun.write(
+    integrationPath + "/setup.ts",
+    `import { beforeAll, afterAll } from "bun:test";
+import { Octokit } from "octokit";
+import { resource } from "./resource.ts";
+
+// any sdk setup here if needed
+
+// load environment variables if needed (that aren't in resource.ts)
+
+beforeAll(() => {
+  // setup code here
+  console.log('BEFOREALL: Setup process');
+})
+
+afterAll(() => {
+  // cleanup code here
+  console.log('AFTERALL: Cleanup process');
+})`
+  );
+
+  Bun.write(integrationPath + "/.env", `# put your credentials here`);
+
+  await $`cd integrations/${integrationName} && bun init && rm -f index.ts`.quiet();
 
   for (const action of actions) {
     const actionFolderName = action.name.replace(/[^a-zA-Z0-9]/g, "_");
@@ -101,10 +130,7 @@ async function createBoilerplate(integrationName: string, actions: Action[]) {
       integrationNamePascal
     );
     await Bun.write(actionPath + "/script.bun.ts", template);
-    const testTemplate = TEST_TEMPLATE.replace(
-      /{actionName}/g,
-      action.description
-    );
+    const testTemplate = TEST_TEMPLATE.replace(/{actionName}/g, action.name);
     await Bun.write(actionPath + "/script.bun.test.ts", testTemplate);
     await Bun.write(
       actionPath + "/script.json",

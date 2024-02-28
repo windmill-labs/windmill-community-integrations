@@ -10,5 +10,9 @@
   "type": "module",
   "dependencies": {
     "yaml": "^2.3.4"
+  },
+  "scripts": {
+    "setup": "bun run src/index.ts",
+    "test": "bun run src/test.ts"
   }
 }

@@ -1,3 +1,2 @@
-resource.ts
-!integrations/example_integration/resource.ts
+.env
 node_modules

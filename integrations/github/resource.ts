@@ -1,3 +1,3 @@
 export const resource = {
-  token: "token",
+  token: Bun.env.TOKEN!,
 };
