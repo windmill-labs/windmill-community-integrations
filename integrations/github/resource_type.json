@@ -1,12 +1,12 @@
 {
-  "description": "The resource type description",
+  "description": "A resource type for GitHub",
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
       "token": {
         "type": "string",
-        "description": "The token to be used for authentication"
+        "description": "personal access token for GitHub"
       }
     },
     "required": [
