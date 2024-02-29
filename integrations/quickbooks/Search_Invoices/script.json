@@ -1,0 +1,4 @@
+{
+  "summary": "Search Invoices",
+  "description": "Searches for invoices. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#query-an-invoice)"
+}

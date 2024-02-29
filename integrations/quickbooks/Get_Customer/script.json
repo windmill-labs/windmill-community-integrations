@@ -1,0 +1,4 @@
+{
+  "summary": "Get Customer",
+  "description": "Returns info about a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/most-commonly-used/customer#read-a-customer)"
+}

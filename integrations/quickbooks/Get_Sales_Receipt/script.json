@@ -1,0 +1,4 @@
+{
+  "summary": "Get Sales Receipt",
+  "description": "Returns details about a sales receipt. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/salesreceipt#read-a-salesreceipt)"
+}

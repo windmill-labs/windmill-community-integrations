@@ -1,0 +1,22 @@
+{
+  "description": "{resource type description}",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "realmId": {
+        "type": "string",
+        "description": "dummy"
+      },
+      "authToken": {
+        "type": "string",
+        "description": "dummy"
+      },
+      "baseUrl": {
+        "type": "string",
+        "description": "dummy"
+      }
+    },
+    "required": ["{property1}"]
+  }
+}
