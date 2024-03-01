@@ -95,7 +95,6 @@ async function createBoilerplate(integrationName: string, actions: Action[]) {
   Bun.write(
     integrationPath + "/setup.ts",
     `import { beforeAll, afterAll } from "bun:test";
-import { Octokit } from "octokit";
 import { resource } from "./resource.ts";
 
 // any sdk setup here if needed
