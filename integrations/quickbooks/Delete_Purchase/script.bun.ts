@@ -22,13 +22,13 @@ export async function main(resource: Quickbooks /* other parameters */) {
     resource.refreshToken
   );
 
-  return new Promise((resolve, reject) => {
-    qbo.createBill(, function (err: any, result: any) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result);
-      }
-    });
-  });
+  // return new Promise((resolve, reject) => {
+  //   qbo.createBill(, function (err: any, result: any) {
+  //     if (err) {
+  //       reject(err);
+  //     } else {
+  //       resolve(result);
+  //     }
+  //   });
+  // });
 }

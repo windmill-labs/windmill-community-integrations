@@ -6,6 +6,7 @@ type Quickbooks = {
   realmId: string;
   authToken: string;
   refreshToken: string;
+  isSandBox: boolean;
 };
 
 export async function main(
@@ -134,7 +135,7 @@ export async function main(
     resource.authToken,
     false,
     resource.realmId,
-    false,
+    resource.isSandBox,
     true,
     null,
     '2.0',

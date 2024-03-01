@@ -6,6 +6,7 @@ type Quickbooks = {
   realmId: string;
   authToken: string;
   refreshToken: string;
+  isSandBox: boolean;
 };
 
 export async function main(
@@ -16,129 +17,113 @@ export async function main(
       name?: string;
     };
     Line: {
-      SalesItemLine?: {
-        Id: string;
-        DetailType: 'SalesItemLineDetail';
-        SalesItemLineDetail: {
-          TaxInclusiveAmt?: number;
-          DiscountAmt?: number;
-          ItemRef?: {
+      DetailType: 'SalesItemLineDetail' | 'GroupLineDetail' | 'DescriptionOnly';
+      Amount: number;
+      Description?: string;
+      LineNum?: number;
+      SalesItemLineDetail?: {
+        TaxInclusiveAmt?: number;
+        DiscountAmt?: number;
+        ItemRef?: {
+          value: string;
+          name?: string;
+        };
+        ClassRef?: {
+          value: string;
+          name?: string;
+        };
+        TaxCodeRef?: {
+          value: string;
+          name?: string;
+        };
+        MarkupInfo?: {
+          PriceLevelRef?: {
             value: string;
             name?: string;
           };
-          ClassRef?: {
+          Percent?: number;
+          MarkUpIncomeAccountRef?: {
             value: string;
             name?: string;
           };
-          TaxCodeRef?: {
-            value: string;
-            name?: string;
-          };
-          MarkupInfo?: {
-            PriceLevelRef?: {
+        };
+        ItemAccountRef?: {
+          value: string;
+          name?: string;
+        };
+        ServiceDate?: string;
+        DiscountRate?: number;
+        Qty?: number;
+        UnitPrice?: number;
+        TaxClassificationRef?: {
+          value: string;
+          name?: string;
+        };
+      };
+      GroupLineDetail?: {
+        Quantity?: number;
+        Line?: {
+          Id: string;
+          DetailType: 'SalesItemLineDetail';
+          SalesItemLineDetail: {
+            TaxInclusiveAmt?: number;
+            DiscountAmt?: number;
+            ItemRef?: {
               value: string;
               name?: string;
             };
-            Percent?: number;
-            MarkUpIncomeAccountRef?: {
+            ClassRef?: {
+              value: string;
+              name?: string;
+            };
+            TaxCodeRef?: {
+              value: string;
+              name?: string;
+            };
+            MarkupInfo?: {
+              PriceLevelRef?: {
+                value: string;
+                name?: string;
+              };
+              Percent?: number;
+              MarkUpIncomeAccountRef?: {
+                value: string;
+                name?: string;
+              };
+            };
+            ItemAccountRef?: {
+              value: string;
+              name?: string;
+            };
+            ServiceDate?: string;
+            DiscountRate?: number;
+            Qty?: number;
+            UnitPrice?: number;
+            TaxClassificationRef?: {
               value: string;
               name?: string;
             };
           };
-          ItemAccountRef?: {
-            value: string;
-            name?: string;
-          };
-          ServiceDate?: string;
-          DiscountRate?: number;
-          Qty?: number;
-          UnitPrice?: number;
-          TaxClassificationRef?: {
-            value: string;
-            name?: string;
-          };
+          Amount: number;
+          Description?: string;
+          LineNum?: number;
+        }[];
+        GroupItemRef?: {
+          value: string;
+          name?: string;
         };
-        Amount: number;
-        Description?: string;
-        LineNum?: number;
       };
-      GroupLine?: {
-        Id: string;
-        GroupLineDetail: {
-          Quantity?: number;
-          Line?: {
-            Id: string;
-            DetailType: 'SalesItemLineDetail';
-            SalesItemLineDetail: {
-              TaxInclusiveAmt?: number;
-              DiscountAmt?: number;
-              ItemRef?: {
-                value: string;
-                name?: string;
-              };
-              ClassRef?: {
-                value: string;
-                name?: string;
-              };
-              TaxCodeRef?: {
-                value: string;
-                name?: string;
-              };
-              MarkupInfo?: {
-                PriceLevelRef?: {
-                  value: string;
-                  name?: string;
-                };
-                Percent?: number;
-                MarkUpIncomeAccountRef?: {
-                  value: string;
-                  name?: string;
-                };
-              };
-              ItemAccountRef?: {
-                value: string;
-                name?: string;
-              };
-              ServiceDate?: string;
-              DiscountRate?: number;
-              Qty?: number;
-              UnitPrice?: number;
-              TaxClassificationRef?: {
-                value: string;
-                name?: string;
-              };
-            };
-            Amount: number;
-            Description?: string;
-            LineNum?: number;
-          }[];
-          GroupItemRef?: {
-            value: string;
-            name?: string;
-          };
+      DescriptionLineDetail?: {
+        TaxCodeRef?: {
+          value: string;
+          name?: string;
         };
-        DetailType: 'GroupLineDetail';
-        LineNum?: number;
-        Description?: string;
-      };
-      DescriptionOnlyLine?: {
-        Id: string;
-        DetailType: 'DescriptionOnly';
-        DescriptionLineDetail: {
-          TaxCodeRef?: {
-            value: string;
-            name?: string;
-          };
-          ServiceDate?: {
-            date: string;
-          };
+        ServiceDate?: {
+          date: string;
         };
-        Description?: string;
-        LineNum?: number;
-        Amount?: number;
       };
     }[];
-    CurrencyRef: {
+    CurrencyRef?: {
       value: string;
       name?: string;
     };
@@ -154,7 +139,7 @@ export async function main(
     resource.authToken,
     false,
     resource.realmId,
-    false,
+    resource.isSandBox,
     true,
     null,
     '2.0',

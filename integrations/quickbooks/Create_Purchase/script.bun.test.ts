@@ -1,19 +1,29 @@
+import { expect, test } from 'bun:test';
+import { main } from './script.bun.ts';
+import { resource } from '../resource.ts';
 
-import { expect, test } from "bun:test";
-import { main } from "./script.bun.ts";
-import { resource } from "../resource.ts";
+test('Create Purchase', async () => {
+  console.log('TEST: Running main function');
+  const response = await main(resource, {
+    PaymentType: 'CreditCard',
+    AccountRef: {
+      value: '42',
+    },
+    Line: [
+      {
+        DetailType: 'AccountBasedExpenseLineDetail',
+        Amount: 10.0,
+        AccountBasedExpenseLineDetail: {
+          AccountRef: {
+            value: '13',
+          },
+          ProjectRef: {
+            value: '42991284',
+          },
+        },
+      },
+    ],
+  });
 
-test("Create Purchase", async () => {
-  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
-
-  console.log("TEST: Will test Create Purchase with arguments: " /* arguments */)
-
-  // any setup code here
-
-  // calling main
-  console.log("TEST: Running main function");
-  const response = await main(resource, /* script arguments */);
-
-  // assertions here
-  // test the response of the main function as well as the side effects of the action directly on the service
+  console.log(response);
 });

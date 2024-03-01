@@ -11,6 +11,7 @@ type Quickbooks = {
 export async function main(
   resource: Quickbooks,
   customer: {
+    sparse: boolean;
     Id?: string;
     SyncToken?: string;
     DisplayName?: string;

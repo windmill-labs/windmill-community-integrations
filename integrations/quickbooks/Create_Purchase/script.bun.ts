@@ -6,6 +6,7 @@ type Quickbooks = {
   realmId: string;
   authToken: string;
   refreshToken: string;
+  isSandBox: boolean;
 };
 
 export async function main(
@@ -17,13 +18,16 @@ export async function main(
       name?: string;
     };
     Line: {
-      Id: string;
+      Id?: string;
       DetailType: string;
       Amount: number;
       AccountBasedExpenseLineDetail: {
         AccountRef: {
           value: string;
           name?: string;
+        };
+        ProjectRef: {
+          value: string;
         };
         TaxAmount?: number;
         TaxInclusiveAmt?: number;
@@ -55,7 +59,7 @@ export async function main(
       Description?: string;
       LineNum?: number;
     }[];
-    CurrencyRef: {
+    CurrencyRef?: {
       value: string;
       name?: string;
     };
@@ -67,7 +71,7 @@ export async function main(
     resource.authToken,
     false,
     resource.realmId,
-    false,
+    resource.isSandBox,
     true,
     null,
     '2.0',
