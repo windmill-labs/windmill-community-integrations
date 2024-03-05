@@ -4,13 +4,17 @@ import { resource } from '../resource.ts';
 import QuickBooks from 'node-quickbooks';
 
 test('Create Customer', async () => {
-  console.log('TEST: Running main function');
+  // Generate a random name since QuickBooks does not allow duplicate names,
+  // nor do they allow deleting customers using the API
+  const name = Math.random().toString(36).slice(2);
+  const email = `${Math.random().toString(36).slice(2)}@myemail.com`;
+
   const response = (await main(resource, {
-    FullyQualifiedName: 'King Groceries',
+    FullyQualifiedName: name,
     PrimaryEmailAddr: {
-      Address: 'jdrew@myemail.com',
+      Address: email,
     },
-    DisplayName: "King's Groceries",
+    DisplayName: name,
     Suffix: 'Jr',
     Title: 'Mr',
     MiddleName: 'B',
@@ -19,7 +23,7 @@ test('Create Customer', async () => {
     PrimaryPhone: {
       FreeFormNumber: '(555) 555-5555',
     },
-    CompanyName: 'King Groceries',
+    CompanyName: name,
     BillAddr: {
       CountrySubDivisionCode: 'CA',
       City: 'Mountain View',
@@ -31,7 +35,7 @@ test('Create Customer', async () => {
   })) as any;
 
   expect(response).toBeDefined();
-  expect(response.FullyQualifiedName).toBe("King's Groceries");
+  expect(response.FullyQualifiedName).toBe(name);
   expect(response.Id).toBeDefined();
 
   var qbo = new QuickBooks(
@@ -58,6 +62,6 @@ test('Create Customer', async () => {
   })) as any;
 
   expect(customerResponse).toBeDefined();
-  expect(customerResponse.FullyQualifiedName).toBe("King's Groceries");
+  expect(customerResponse.FullyQualifiedName).toBe(name);
   expect(customerResponse.Id).toBe(response.Id);
 });

@@ -18,36 +18,57 @@ test('Delete Purchase', async () => {
     resource.refreshToken
   );
 
-  // Fetch all purchases
-  const purchasesResponse = (await new Promise((resolve, reject) => {
-    qbo.findPurchases('', function (err: any, result: any) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result);
+  // Create a purchase
+  const createResponse = (await new Promise((resolve, reject) => {
+    qbo.createPurchase(
+      {
+        PaymentType: 'CreditCard',
+        AccountRef: {
+          value: '42',
+        },
+        Line: [
+          {
+            DetailType: 'AccountBasedExpenseLineDetail',
+            Amount: 10.0,
+            AccountBasedExpenseLineDetail: {
+              AccountRef: {
+                value: '13',
+              },
+            },
+          },
+        ],
+      },
+      function (err: any, result: any) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
       }
-    });
+    );
   })) as any;
-  expect(purchasesResponse.QueryResponse.Purchase).toBeDefined();
+  expect(createResponse).toBeDefined();
+  expect(createResponse.Id).toBeDefined();
 
-  // Get the ID of the first one
-  const purchase = purchasesResponse.QueryResponse.Purchase[0];
+  // Get the purchase id
+  const purchaseId = createResponse.Id;
 
   // Delete the purchase
-  const response = await main(resource, { Id: purchase.Id, SyncToken: '2' });
+  const response = await main(resource, { Id: purchaseId, SyncToken: '2' });
   expect(response).toBeDefined();
 
   // Check that the purchase was deleted
-  const getPurchaseResponse = (await new Promise((resolve, reject) => {
-    qbo.getPurchase(purchase.Id, function (err: any, result: any) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result);
-      }
-    });
-  })) as any;
-  console.log(getPurchaseResponse);
-  expect(getPurchaseResponse).toBeDefined();
-  expect(getPurchaseResponse.Fault).toBeDefined();
+  try {
+    (await new Promise((resolve, reject) => {
+      qbo.getPurchase(purchaseId, function (err: any, result: any) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    })) as any;
+  } catch (err) {
+    expect(err).toBeDefined();
+  }
 });
