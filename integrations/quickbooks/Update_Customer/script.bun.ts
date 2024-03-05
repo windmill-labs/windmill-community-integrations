@@ -33,7 +33,7 @@ export async function main(
       value: string;
       name?: string;
     };
-    PreferredDeliveryMethod?: 'Print' | 'Email' | 'None';
+    PreferredDeliveryMethod?: string;
     GSTIN?: string;
     SalesTermRef?: {
       value: string;
@@ -42,31 +42,27 @@ export async function main(
     CustomerTypeRef?: {
       value: string;
     };
-    Fax?: {
-      FreeFormNumber?: string;
-    };
+    Fax?: string;
     BusinessNumber?: string;
     BillWithParent?: boolean;
     CurrencyRef?: {
       value: string;
       name?: string;
     };
-    Mobile?: {
-      FreeFormNumber?: string;
-    };
+    Mobile?: string;
     Job?: boolean;
     BalanceWithJobs?: number;
     PrimaryPhone?: {
       FreeFormNumber?: string;
     };
-    OpenBalanceDate?: string; // Date format
+    OpenBalanceDate?: string;
     Taxable?: boolean;
     AlternatePhone?: {
       FreeFormNumber?: string;
     };
     MetaData?: {
-      CreateTime?: string; // Date time format
-      LastUpdatedTime?: string; // Date time format
+      CreateTime?: string;
+      LastUpdatedTime?: string;
     };
     ParentRef?: {
       value: string;
@@ -84,11 +80,11 @@ export async function main(
       PostalCode?: string;
       City?: string;
       Country?: string;
-      Line5?: string;
-      Line4?: string;
-      Line3?: string;
-      Line2?: string;
       Line1?: string;
+      Line2?: string;
+      Line3?: string;
+      Line4?: string;
+      Line5?: string;
       Lat?: string;
       Long?: string;
       CountrySubDivisionCode?: string;
@@ -107,11 +103,11 @@ export async function main(
       PostalCode?: string;
       City?: string;
       Country?: string;
-      Line5?: string;
-      Line4?: string;
-      Line3?: string;
-      Line2?: string;
       Line1?: string;
+      Line2?: string;
+      Line3?: string;
+      Line4?: string;
+      Line5?: string;
       Lat?: string;
       Long?: string;
       CountrySubDivisionCode?: string;

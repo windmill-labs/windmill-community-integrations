@@ -1,19 +1,53 @@
+import { expect, test } from 'bun:test';
+import { main } from './script.bun.ts';
+import { resource } from '../resource.ts';
+import QuickBooks from 'node-quickbooks';
 
-import { expect, test } from "bun:test";
-import { main } from "./script.bun.ts";
-import { resource } from "../resource.ts";
+test('Delete Purchase', async () => {
+  // Initialize the client
+  var qbo = new QuickBooks(
+    resource.clientId,
+    resource.clientSecret,
+    resource.authToken,
+    false,
+    resource.realmId,
+    resource.isSandBox,
+    true,
+    null,
+    '2.0',
+    resource.refreshToken
+  );
 
-test("Delete Purchase", async () => {
-  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
+  // Fetch all purchases
+  const purchasesResponse = (await new Promise((resolve, reject) => {
+    qbo.findPurchases('', function (err: any, result: any) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })) as any;
+  expect(purchasesResponse.QueryResponse.Purchase).toBeDefined();
 
-  console.log("TEST: Will test Delete Purchase with arguments: " /* arguments */)
+  // Get the ID of the first one
+  const purchase = purchasesResponse.QueryResponse.Purchase[0];
 
-  // any setup code here
+  // Delete the purchase
+  const response = await main(resource, { Id: purchase.Id, SyncToken: '2' });
+  expect(response).toBeDefined();
 
-  // calling main
-  console.log("TEST: Running main function");
-  const response = await main(resource, /* script arguments */);
-
-  // assertions here
-  // test the response of the main function as well as the side effects of the action directly on the service
+  // Check that the purchase was deleted
+  const getPurchaseResponse = (await new Promise((resolve, reject) => {
+    qbo.getPurchase(purchase.Id, function (err: any, result: any) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })) as any;
+  console.log(getPurchaseResponse);
+  expect(getPurchaseResponse).toBeDefined();
+  expect(getPurchaseResponse.Fault).toBeDefined();
 });

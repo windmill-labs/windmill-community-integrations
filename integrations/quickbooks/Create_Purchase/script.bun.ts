@@ -26,7 +26,7 @@ export async function main(
           value: string;
           name?: string;
         };
-        ProjectRef: {
+        ProjectRef?: {
           value: string;
         };
         TaxAmount?: number;

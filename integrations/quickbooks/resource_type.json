@@ -1,22 +1,34 @@
 {
-  "description": "{resource type description}",
+  "description": "Schema for the resource configuration",
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
-      "realmId": {
+      "clientId": {
         "type": "string",
-        "description": "dummy"
+        "description": "The client ID for authentication"
+      },
+      "clientSecret": {
+        "type": "string",
+        "description": "The client secret for authentication"
       },
       "authToken": {
         "type": "string",
-        "description": "dummy"
+        "description": "The access token for authentication"
       },
-      "baseUrl": {
+      "realmId": {
         "type": "string",
-        "description": "dummy"
+        "description": "The realm ID for specifying the realm"
+      },
+      "refreshToken": {
+        "type": "string",
+        "description": "The refresh token for obtaining a new access token"
+      },
+      "isSandBox": {
+        "type": "boolean",
+        "description": "Flag indicating whether the environment is a sandbox"
       }
     },
-    "required": ["{property1}"]
+    "required": ["clientId", "clientSecret", "authToken", "realmId", "refreshToken", "isSandBox"]
   }
 }

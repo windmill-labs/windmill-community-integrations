@@ -1,6 +1,7 @@
 import { expect, test } from 'bun:test';
 import { main } from './script.bun.ts';
 import { resource } from '../resource.ts';
+import QuickBooks from 'node-quickbooks';
 
 test('Create Customer', async () => {
   console.log('TEST: Running main function');
@@ -32,4 +33,31 @@ test('Create Customer', async () => {
   expect(response).toBeDefined();
   expect(response.FullyQualifiedName).toBe("King's Groceries");
   expect(response.Id).toBeDefined();
+
+  var qbo = new QuickBooks(
+    resource.clientId,
+    resource.clientSecret,
+    resource.authToken,
+    false,
+    resource.realmId,
+    resource.isSandBox,
+    true,
+    null,
+    '2.0',
+    resource.refreshToken
+  );
+
+  const customerResponse = (await new Promise((resolve, reject) => {
+    qbo.getCustomer(response.Id, function (err: any, result: any) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })) as any;
+
+  expect(customerResponse).toBeDefined();
+  expect(customerResponse.FullyQualifiedName).toBe("King's Groceries");
+  expect(customerResponse.Id).toBe(response.Id);
 });

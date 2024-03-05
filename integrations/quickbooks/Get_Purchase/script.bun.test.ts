@@ -1,19 +1,35 @@
+import { expect, test } from 'bun:test';
+import { main } from './script.bun.ts';
+import { resource } from '../resource.ts';
+import QuickBooks from 'node-quickbooks';
 
-import { expect, test } from "bun:test";
-import { main } from "./script.bun.ts";
-import { resource } from "../resource.ts";
+test('Get Purchase', async () => {
+  const qbo = new QuickBooks(
+    resource.clientId,
+    resource.clientSecret,
+    resource.authToken,
+    false,
+    resource.realmId,
+    resource.isSandBox,
+    true,
+    null,
+    '2.0',
+    resource.refreshToken
+  );
 
-test("Get Purchase", async () => {
-  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
+  const getPurchasesResponse = (await new Promise((resolve, reject) => {
+    qbo.findPurchases('', function (err: any, result: any) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })) as any;
+  expect(getPurchasesResponse.QueryResponse.Purchase).toBeDefined();
 
-  console.log("TEST: Will test Get Purchase with arguments: " /* arguments */)
-
-  // any setup code here
-
-  // calling main
-  console.log("TEST: Running main function");
-  const response = await main(resource, /* script arguments */);
-
-  // assertions here
-  // test the response of the main function as well as the side effects of the action directly on the service
+  const purchaseId = getPurchasesResponse.QueryResponse.Purchase[0].Id;
+  const response = (await main(resource, purchaseId)) as any;
+  expect(response).toBeDefined();
+  expect(response.Id).toBe(purchaseId);
 });
