@@ -1,0 +1,4 @@
+{
+  "summary": "Delete Purchase",
+  "description": "Delete a specific purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#delete-a-purchase)"
+}
