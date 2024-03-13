@@ -1,19 +1,26 @@
+import { expect, test } from 'bun:test'
+import { main } from './script.bun.ts'
+import { resource } from '../resource.ts'
+import { createClient } from '@typeform/api-client'
 
-import { expect, test } from "bun:test";
-import { main } from "./script.bun.ts";
-import { resource } from "../resource.ts";
+test('Get a Form', async () => {
+	const typeformAPI = createClient({
+		token: resource.token,
+		apiBaseUrl: resource.baseUrl
+	})
 
-test("Get a Form", async () => {
-  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
+	// Create a form
+	const form = await typeformAPI.forms.create({
+		data: {
+			title: 'My new form'
+		}
+	})
 
-  console.log("TEST: Will test Get a Form with arguments: " /* arguments */)
+	const response = await main(resource, form.id!)
+	expect(response).toBeDefined()
+	expect(response.id).toBe(form.id!)
+	expect(response.title).toBe('My new form')
 
-  // any setup code here
-
-  // calling main
-  console.log("TEST: Running main function");
-  const response = await main(resource, /* script arguments */);
-
-  // assertions here
-  // test the response of the main function as well as the side effects of the action directly on the service
-});
+	// Delete the form
+	await typeformAPI.forms.delete({ uid: form.id! })
+})

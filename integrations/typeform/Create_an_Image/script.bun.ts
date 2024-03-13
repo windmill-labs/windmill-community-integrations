@@ -9,7 +9,7 @@ export async function main(
 	resource: Typeform,
 	data: {
 		image: string
-		url: string
+		url?: string
 		fileName: string
 	}
 ) {

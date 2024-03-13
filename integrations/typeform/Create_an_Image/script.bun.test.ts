@@ -1,19 +1,30 @@
+import { expect, test } from 'bun:test'
+import { main } from './script.bun.ts'
+import { resource } from '../resource.ts'
+import { createClient } from '@typeform/api-client'
 
-import { expect, test } from "bun:test";
-import { main } from "./script.bun.ts";
-import { resource } from "../resource.ts";
+test('Create an Image', async () => {
+	const typeformAPI = createClient({
+		token: resource.token,
+		apiBaseUrl: resource.baseUrl
+	})
 
-test("Create an Image", async () => {
-  // script arguments here (also load environment variables if needed using Bun.env.VARIABLE_NAME!)
+	const response = await main(resource, {
+		fileName: 'newimage.gif',
+		image:
+			'iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAG0lEQVR42mOccuMbA7mAcVTzqOZRzaOaB1YzABKjL70rq/b4AAAAAElFTkSuQmCC'
+	})
 
-  console.log("TEST: Will test Create an Image with arguments: " /* arguments */)
+	expect(response).toBeDefined()
+	expect(response.id).toBeDefined()
+	expect(response.file_name).toBe('newimage.gif')
 
-  // any setup code here
+	// Fetch the image
+	const image = await typeformAPI.images.get({ id: response.id! })
+	expect(image).toBeDefined()
+	expect(image.id).toBe(response.id!)
+	expect(image.file_name).toBe('newimage.gif')
 
-  // calling main
-  console.log("TEST: Running main function");
-  const response = await main(resource, /* script arguments */);
-
-  // assertions here
-  // test the response of the main function as well as the side effects of the action directly on the service
-});
+	// Delete the image
+	await typeformAPI.images.delete({ id: response.id! })
+})
