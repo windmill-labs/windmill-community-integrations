@@ -11,7 +11,7 @@ In addition, we provide a CLI to generate all the boilerplate code for a given i
 
 Check issues for the desired integration we currently need.
 
-You can find below the guide to contribute all the scripts for a specific integration
+You can find below the guide to contributing all the scripts for a specific integration
 
 ### Credentials and environment variables setup
 
@@ -26,11 +26,17 @@ You can find below the guide to contribute all the scripts for a specific integr
 
 Note: resource types are object definitions that represent credentials for a specific integration. You can learn more about them [here](https://www.windmill.dev/docs/core_concepts/resources_and_types).
 
+Special case for OAUTH: if the integration uses OAuth, do not include the OAuth flow in the script. Just define a property named `token` on the resource type that you can set to the access token during your tests.
+
 ### Creating the scripts
 
-- Adjust each script template to achieve the desired functionality. You will need to specify the parameters of the resource type in each script. They have to be the same in all the scripts and match the resource type definition in `integrations/{integration_name}/resource_type.json`.
-- Update the test file for arguments. Include any preliminary and clean-up steps (e.g. creating an object before deleting it). Ideally, you should check directly on the integration's platform that the script worked as expected.
+- Adjust each script template to achieve the desired functionality. You will need to specify the parameters of the resource type in each script. They have to be the same in all the scripts and match the resource type definition in `integrations/{integration_name}/resource_type.json`. For function parameters, define the types inline (e.g. "repositories: { owner: string, repo: string }[]") rather than defining a type for each parameter and avoid nested types when possible.
+- Update the test file with appropriate testing arguments. Include any preliminary and clean-up steps. Here's a general guide for the tests:
+  - GET: Before calling the script, create the object that you will retrieve. After calling the script, just check that what the script returned matches the object you created. Delete the object.
+  - POST/PUT: Create the object, call the script to update it, check that the object was updated as expected using the SDK/API. Delete the object.
+  - DELETE: Create the object, call the script to delete it, check that the object was deleted using the SDK/API.
 - You can also write into the `integrations/{integration_name}/setup.ts` file any setup code that you may need before and after all tests of all scripts (e.g. creating a new project before running the tests and deleting it after).
+- Please make sure to format the code using prettier before creating the PR.
 - **Inside the `integrations/{integration_name}` folder**, run `bun test --preload ./setup.ts` to check the tests.
 
 Tip: You can find a complete example for GitHub in the `integrations/github` folder
@@ -42,6 +48,14 @@ Once you're done, create a PR with all the files apart from `.env` (which should
 
 <!-- 
 
+## Desired integrations
+
+- Zoom
+- Gforms
+- Typeform
+- Reddit
+- WooCommerce
+
 ## Desired OpenAPI integrations
 
 - [Digital Ocean](https://raw.githubusercontent.com/digitalocean/openapi/main/specification/DigitalOcean-public.v2.yaml)
@@ -51,6 +65,7 @@ Once you're done, create a PR with all the files apart from `.env` (which should
 - [Segment](blob:https://docs.segmentapis.com/f819be65-205f-4cc1-acc3-6e62d73068cf)
 - [smartsheet](blob:https://smartsheet.redoc.ly/48102eb8-af78-4edc-a31f-420228a5a198)
 - [Splitwise](https://raw.githubusercontent.com/splitwise/api-docs/main/splitwise.yaml)
+- [Supabase](https://api.supabase.com/api/v1-json)
 
 ## Contributing guide
 

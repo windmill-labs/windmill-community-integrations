@@ -1,108 +1,195 @@
-- description: Creates a bill. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/bill#create-a-bill)
-  id: create-bill
-  integration: quickbooks
-  name: Create Bill
-- description: Creates a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#create-a-customer)
+- description: Registers a participant for a meeting. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/meetingRegistrantCreate)
+  id: add-meeting-registrant
+  integration: zoom
+  name: Add Meeting Registrant
+- description: Registers a participant for a webinar. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/webinars/webinarregistrantcreate).
+  id: add-webinar-registrant
+  integration: zoom
+  name: Add Webinar Registrant
+- description: Creates a meeting for a user. A maximum of 100 meetings can be created
+    for a user in a day.
+  id: create-meeting
+  integration: zoom
+  name: Create Meeting
+- description: Creates a new user in your account.
+  id: create-user
+  integration: zoom
+  name: Create User
+- description: Disassociates (unlinks) a user from the associated account or permanently
+    deletes a user.
+  id: delete-user
+  integration: zoom
+  name: Delete User
+- description: Retrieves the details of a meeting.
+  id: get-meeting-details
+  integration: zoom
+  name: Get Meeting Details
+- description: Gets details of a scheduled webinar. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/webinar).
+  id: get-webinar-details
+  integration: zoom
+  name: Get Webinar Details
+- description: List a user's chat channels.
+  id: list-channels
+  integration: zoom
+  name: List Channels
+- description: Retrieve information on participants from a past meeting. [See the
+    docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/pastMeetingParticipants).
+  id: list-past-meeting-participants
+  integration: zoom
+  name: List Past Meeting Participants
+- description: The  feature for Webinars allows attendees to ask questions during
+    the Webinar and for the panelists, co-hosts and host to answer their questions.
+    Use this API to list Q&A of a specific Webinar.
+  id: list-past-webinar-qa
+  integration: zoom
+  name: List Past Webinar Q&A
+- description: Retrieves detailed report on each webinar attendee. You can get webinar
+    participant reports for the last 6 months. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/reportWebinarParticipants).
+  id: list-webinar-participants-report
+  integration: zoom
+  name: List Webinar Participants Report
+- description: Send chat messages on Zoom to either an individual user who is in your
+    contact list or to a  of which you are a member.
+  id: send-chat-message
+  integration: zoom
+  name: Send Chat Message
+- description: Updates an existing Zoom meeting
+  id: update-meeting
+  integration: zoom
+  name: Update Meeting
+- description: Update a webinar's topic, start time, or other settings
+  id: update-webinar
+  integration: zoom
+  name: Update Webinar
+- description: View your user information
+  id: view-user
+  integration: zoom
+  name: View User
+- description: Creates a form with its corresponing fields. [See the docs here](https://developer.typeform.com/create/reference/create-form/)
+  id: create-form
+  integration: typeform
+  name: Create a Form
+- description: Adds an image in your Typeform account. [See the docs here](https://developer.typeform.com/create/reference/create-image/)
+  id: create-image
+  integration: typeform
+  name: Create an Image
+- description: Select a form to be deleted. [See the docs here](https://developer.typeform.com/create/reference/delete-form/).
+  id: delete-form
+  integration: typeform
+  name: Delete Form
+- description: Deletes an image from your Typeform account. [See the docs here](https://developer.typeform.com/create/reference/delete-image/)
+  id: delete-image
+  integration: typeform
+  name: Delete an Image
+- description: Duplicates an existing form in your Typeform account and adds \"(copy)\"
+    to the end of the title. [See the docs here](https://developer.typeform.com/create/reference/create-form/)
+  id: duplicate-form
+  integration: typeform
+  name: Duplicate a Form
+- description: Select a specific form to get the data. [See the docs here](https://developer.typeform.com/create/reference/retrieve-form/)
+  id: get-form
+  integration: typeform
+  name: Get a Form
+- description: Retrieves a list of forms. [See the docs here](https://developer.typeform.com/create/reference/retrieve-forms/)
+  id: list-forms
+  integration: typeform
+  name: List Forms
+- description: Retrieves a list of JSON descriptions for all images in your Typeform
+    account. [See the docs here](https://developer.typeform.com/create/reference/retrieve-images-collection/)
+  id: list-images
+  integration: typeform
+  name: List Images
+- description: Returns form responses and date and time of form landing and submission.
+    [See the docs here](https://developer.typeform.com/responses/reference/retrieve-responses/)
+  id: list-responses
+  integration: typeform
+  name: List Responses
+- description: Search for responses with the `query` property. [See the docs here](https://developer.typeform.com/responses/reference/retrieve-responses/)
+  id: lookup-responses
+  integration: typeform
+  name: Lookup Responses
+- description: Update a dropdown, multiple choice, or ranking field's choices. [See
+    the docs here](https://developer.typeform.com/create/reference/update-form/)
+  id: update-dropdown-multiple-choice-ranking
+  integration: typeform
+  name: Update Dropdown, Multiple Choice or Ranking
+- description: Updates an existing form's title. [See the docs here](https://developer.typeform.com/create/reference/update-form-patch/)
+  id: update-form-title
+  integration: typeform
+  name: Update Form Title
+- description: List comments for a specific post. [See the docs here](https://www.reddit.com/dev/api/#GET_comments_{article})
+  id: list-comments-in-a-post
+  integration: reddit
+  name: List Comments in a Post
+- description: List subreddits based on a search criteria. [See the docs here](https://www.reddit.com/dev/api/#GET_subreddits_search)
+  id: list-subreddits-by-query
+  integration: reddit
+  name: List Subreddits by Query
+- description: Search posts by title. [See the docs here](https://www.reddit.com/dev/api/#GET_search)
+  id: search-post
+  integration: reddit
+  name: Search Post
+- description: Submit a new comment or reply to a message. [See the docs here](https://www.reddit.com/dev/api/#POST_api_comment)
+  id: submit-a-comment
+  integration: reddit
+  name: Submit a Comment
+- description: Create a post to a subreddit. [See the docs here](https://www.reddit.com/dev/api/#POST_api_submit)
+  id: submit-a-post
+  integration: reddit
+  name: Submit a Post
+- description: Creates a new customer. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#create-a-customer)
   id: create-customer
-  integration: quickbooks
+  integration: woocommerce
   name: Create Customer
-- description: Creates an invoice. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#create-an-invoice)
-  id: create-invoice
-  integration: quickbooks
-  name: Create Invoice
-- description: Creates a payment. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/payment#create-a-payment)
-  id: create-payment
-  integration: quickbooks
-  name: Create Payment
-- description: Creates a new purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#create-a-purchase)
-  id: create-purchase
-  integration: quickbooks
-  name: Create Purchase
-- description: Creates a sales receipt. [See the documentation](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/salesreceipt#create-a-salesreceipt)
-  id: create-sales-receipt
-  integration: quickbooks
-  name: Create Sales Receipt
-- description: Delete a specific purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#delete-a-purchase)
-  id: delete-purchase
-  integration: quickbooks
-  name: Delete Purchase
-- description: Returns info about a bill. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/bill#read-a-bill)
-  id: get-bill
-  integration: quickbooks
-  name: Get Bill
-- description: Returns info about a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/most-commonly-used/customer#read-a-customer)
+- description: Creates a new order. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#create-an-order)
+  id: create-order
+  integration: woocommerce
+  name: Create Order
+- description: Creates a new product. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-product)
+  id: create-product
+  integration: woocommerce
+  name: Create Product
+- description: Retrieve a specific customer. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#retrieve-a-customer)
   id: get-customer
-  integration: quickbooks
+  integration: woocommerce
   name: Get Customer
-- description: Returns info about an invoice. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#read-an-invoice)
-  id: get-invoice
-  integration: quickbooks
-  name: Get Invoice
-- description: Gets info about a company. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/companyinfo)
-  id: get-my-company
-  integration: quickbooks
-  name: Get My Company
-- description: Returns details about a purchase order. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchaseorder#read-a-purchase-order)
-  id: get-purchase-order
-  integration: quickbooks
-  name: Get Purchase Order
-- description: Returns info about a purchase. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#read-a-purchase)
-  id: get-purchase
-  integration: quickbooks
-  name: Get Purchase
-- description: Returns details about a sales receipt. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/salesreceipt#read-a-salesreceipt)
-  id: get-sales-receipt
-  integration: quickbooks
-  name: Get Sales Receipt
-- description: Returns info about an activity. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/timeactivity#read-a-timeactivity-object)
-  id: get-time-activity
-  integration: quickbooks
-  name: Get Time Activity
-- description: Searches for invoices. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#query-an-invoice)
-  id: sandbox-search-invoices
-  integration: quickbooks
-  name: Search Invoices
-- description: Search for accounts. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account#query-an-account)
-  id: search-accounts
-  integration: quickbooks
-  name: Search Accounts
-- description: Searches for customers. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#query-a-customer)
+- description: Retrieve a specific order. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#retrieve-an-order)
+  id: get-order
+  integration: woocommerce
+  name: Get Order
+- description: Finds a customer by searching. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-customers)
   id: search-customers
-  integration: quickbooks
+  integration: woocommerce
   name: Search Customers
-- description: Searches for items. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/item#query-an-item)
-  id: search-items
-  integration: quickbooks
-  name: Search Items
-- description: Search for products. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/item#query-an-item)
-  id: search-products
-  integration: quickbooks
-  name: Search Products
-- description: Searches for purchases. [See the documentation](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/purchase#query-a-purchase)
-  id: search-purchases
-  integration: quickbooks
-  name: Search Purchases
-- description: Performs a search query against a Quickbooks entity. [See docs here](https://developer.intuit.com/app/develophttps://developer.intuit.com/app/developer/qbo/docs/develop/explore-the-quickbooks-online-api/data-queries)
-  id: search-query
-  integration: quickbooks
-  name: Search Query
-- description: Searches for time activities. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/timeactivity#query-a-timeactivity-object)
-  id: search-time-activities
-  integration: quickbooks
-  name: Search Time Activities
-- description: Searches for vendors. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/vendor#query-a-vendor)
-  id: search-vendors
-  integration: quickbooks
-  name: Search Vendors
-- description:
-    "Sparse updating provides the ability to update a subset of properties\
-    \ for a given object; only elements specified in the request are updated. Missing\
-    \ elements are left untouched. The ID of the object to update is specified in\
-    \ the request body.\u200B [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#sparse-update-an-invoice)"
-  id: sparse-update-invoice
-  integration: quickbooks
-  name: Sparse Update Invoice
-- description: Updates a customer. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/customer#full-update-a-customer)
-  id: update-customer
-  integration: quickbooks
-  name: Update Customer
+- description: Update the status of a specific order. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#update-an-order)
+  id: update-order-status
+  integration: woocommerce
+  name: Update Order Status
+- description: Updates a product. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/#update-a-product)
+  id: update-product
+  integration: woocommerce
+  name: Update Product
+- description: Creates a new Google Form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms/create)
+  id: create-form
+  integration: gforms
+  name: Create Form
+- description: Creates a new text question in a Google Form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms/batchUpdate)
+  id: create-text-question
+  integration: gforms
+  name: Create Text Question
+- description: Get a response from a form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms.responses/get)
+  id: get-form-response
+  integration: gforms
+  name: Get Form Response
+- description: Get information about a Google Form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms/get)
+  id: get-form
+  integration: gforms
+  name: Get Form
+- description: List a form's responses. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms.responses/list)
+  id: list-form-responses
+  integration: gforms
+  name: List Form Responses
+- description: Updates the title of a Google Form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms/batchUpdate)
+  id: update-form-title
+  integration: gforms
+  name: Update Form Title

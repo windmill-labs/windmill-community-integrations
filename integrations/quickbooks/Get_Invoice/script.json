@@ -1,4 +1,0 @@
-{
-  "summary": "Get Invoice",
-  "description": "Returns info about an invoice. [See docs here](https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice#read-an-invoice)"
-}
