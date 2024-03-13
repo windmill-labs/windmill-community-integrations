@@ -11,17 +11,33 @@ export async function main(resource: Typeform, formId: string) {
 		apiBaseUrl: resource.baseUrl
 	})
 
-	// Get the form
+	// // Get the form
 	const form = await typeformAPI.forms.get({ uid: formId })
 
-	// Update the title of the form
-	const title = form.title + ' (copy)'
+	if (!form.workspace) {
+		throw new Error('Form not found')
+	}
 
 	// Create a copy of the form
-	return await typeformAPI.forms.create({
-		data: {
-			...form,
-			title
-		}
+	const newForm = await typeformAPI.forms.copy({
+		uid: formId,
+		workspaceHref: form.workspace!.href!
 	})
+
+	// Update the title of the new form
+	await typeformAPI.forms.update({
+		uid: newForm.id!,
+		override: false,
+		data: [
+			{
+				op: 'replace',
+				path: '/title',
+				value: `${form.title} (copy)`
+			}
+		]
+	})
+
+	newForm.title = `${form.title} (copy)`
+
+	return newForm
 }

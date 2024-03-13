@@ -121,7 +121,7 @@ export async function main(
 
 	return await typeformAPI.forms.update({
 		uid: data.id,
-		override: false,
+		override: true,
 		// @ts-ignore
 		data
 	})

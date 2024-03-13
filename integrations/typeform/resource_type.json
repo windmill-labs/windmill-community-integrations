@@ -12,6 +12,10 @@
 				"type": "string",
 				"description": "Typeform API base URL",
 				"default": "https://api.typeform.com"
+			},
+			"manuallyCreatedFormId": {
+				"type": "string",
+				"description": "Typeform form ID created manually for testing purposes"
 			}
 		},
 		"required": ["token"]
