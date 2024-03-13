@@ -1,0 +1,16 @@
+{
+  "description": "{resource type description}",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "{property1}": {
+        "type": "string",
+        "description": "{property1 description}"
+      }
+    },
+    "required": [
+      "{property1}"
+    ]
+  }
+}
