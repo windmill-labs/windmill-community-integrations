@@ -1,13 +1,13 @@
 import { createClient } from '@typeform/api-client'
 
 type Typeform = {
-	typeformToken: string
+	token: string
 	baseUrl: string
 }
 
 export async function main(resource: Typeform) {
 	const typeformAPI = createClient({
-		token: resource.typeformToken,
+		token: resource.token,
 		apiBaseUrl: resource.baseUrl
 	})
 
