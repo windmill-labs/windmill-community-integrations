@@ -1,15 +1,14 @@
 {
   "name": "zoom",
   "module": "index.ts",
-  "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "type": "module",
   "dependencies": {
-    "@galkin/zoom-meeting-api": "^0.3.0",
-    "zoomapi": "^2.1.0"
+    "zoomapi": "npm:zoomapi-neo773"
   }
 }
