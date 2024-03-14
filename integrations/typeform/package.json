@@ -1,0 +1,14 @@
+{
+  "name": "typeform",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@typeform/api-client": "^2.3.2"
+  }
+}

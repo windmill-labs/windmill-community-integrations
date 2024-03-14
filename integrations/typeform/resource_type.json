@@ -1,0 +1,19 @@
+{
+	"description": "{resource type description}",
+	"schema": {
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"type": "object",
+		"properties": {
+			"token": {
+				"type": "string",
+				"description": "Typeform API token"
+			},
+			"baseUrl": {
+				"type": "string",
+				"description": "Typeform API base URL",
+				"default": "https://api.typeform.com"
+			}
+		},
+		"required": ["token"]
+	}
+}

@@ -1,0 +1,4 @@
+{
+  "summary": "List Responses",
+  "description": "Returns form responses and date and time of form landing and submission. [See the docs here](https://developer.typeform.com/responses/reference/retrieve-responses/)"
+}
