@@ -13,7 +13,7 @@ import { resource } from '../resource.ts'
  */
 test('List Responses', async () => {
 	const response = await main(resource, {
-		formId: resource.manuallyCreatedFormId
+		formId: process.env.TYPEFORM_MANUALLY_CREATED_FORM_ID!
 	})
 	expect(response).toBeDefined()
 	expect(response.total_items).toBeGreaterThan(0)
