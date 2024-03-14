@@ -4,7 +4,7 @@ type Gforms = {
 	token: string
 }
 
-export async function main(resource: Gforms, formId: string) {
+export async function main(resource: Gforms, formId: string, index: number = 0) {
 	// setup auth
 	const forms = google.forms({
 		version: 'v1',
@@ -17,7 +17,7 @@ export async function main(resource: Gforms, formId: string) {
 			{
 				createItem: {
 					location: {
-						index: 0
+						index: index
 					},
 					item: {
 						questionItem: {
@@ -38,5 +38,5 @@ export async function main(resource: Gforms, formId: string) {
 		requestBody: textQuestion
 	})
 
-	return `Text question created in form ${formId}`
+	return res.data
 }

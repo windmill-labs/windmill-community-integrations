@@ -14,10 +14,5 @@ test('Update Form Title', async () => {
 	const response = await main(resource, formId, title)
 
 	// assertions here
-	expect(response).toBe(`Form title updated to ${title} in form ${formId}`)
-	// test the response of the main function as well as the side effects of the action directly on the service
-	const forms = google.forms({
-		version: 'v1',
-		auth: resource.token
-	})
+	expect(response.writeControl).toBeDefined()
 })

@@ -8,19 +8,18 @@ const forms = google.forms({
 	auth: resource.token
 })
 
-// load environment variables if needed (that aren't in resource.ts)
-const formId = Bun.env.FORM_ID!
-const responseId = Bun.env.RESPONSE_ID!
-
 beforeAll(async () => {
 	// create a form
-	await forms.forms.create({
+	const createForm = await forms.forms.create({
 		requestBody: {
 			info: {
 				title: 'Test Form'
 			}
 		}
 	})
+
+	const formId = createForm.data.formId
+
 	// create a text question
 	await forms.forms.batchUpdate({
 		formId: formId,
@@ -45,19 +44,25 @@ beforeAll(async () => {
 			]
 		}
 	})
+
 	// get form
 	await forms.forms.get({
 		formId: formId
 	})
+
+	// list form responses
+	const listFormResponse = await forms.forms.list({
+		formId: formId
+	})
+
+	const responseId = listFormResponse.data.responses[0].responseId
+
 	// get form responses
 	await forms.forms.get({
 		formId: formId,
 		responseId: responseId
 	})
-	// list form responses
-	await forms.forms.list({
-		formId: formId
-	})
+
 	// update form title
 	await forms.forms.batchUpdate({
 		formId: formId,
@@ -74,13 +79,10 @@ beforeAll(async () => {
 			]
 		}
 	})
+
 	console.log('BEFOREALL: Setup process')
 })
 
 afterAll(() => {
-	// delete form
-	forms.forms.delete({
-		formId: formId
-	})
 	console.log('AFTERALL: Cleanup process')
 })

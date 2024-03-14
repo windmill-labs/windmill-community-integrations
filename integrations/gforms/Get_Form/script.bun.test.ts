@@ -13,10 +13,5 @@ test('Get Form', async () => {
 	const response = await main(resource, formId)
 
 	// assertions here
-	expect(response).toBe('Get Form')
-	// test the response of the main function as well as the side effects of the action directly on the service
-	const forms = google.forms({
-		version: 'v1',
-		auth: resource.token
-	})
+	expect(response.formId).toBe(formId)
 })

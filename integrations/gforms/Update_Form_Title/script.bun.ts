@@ -30,5 +30,5 @@ export async function main(resource: Gforms, formId: string, title: string) {
 		requestBody: updateFormTitle
 	})
 
-	return `Form title updated to ${title} in form ${formId}`
+	return res.data
 }

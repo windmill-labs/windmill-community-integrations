@@ -22,5 +22,5 @@ export async function main(resource: Gforms, title: string) {
 		requestBody: newForm
 	})
 
-	return `Form ${title} created`
+	return res.data
 }
