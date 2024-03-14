@@ -18,67 +18,13 @@ beforeAll(async () => {
 		}
 	})
 
-	const formId = createForm.data.formId
-
-	// create a text question
-	await forms.forms.batchUpdate({
-		formId: formId,
-		requestBody: {
-			requests: [
-				{
-					createItem: {
-						location: {
-							index: 0
-						},
-						item: {
-							questionItem: {
-								question: {
-									textQuestion: {
-										paragraph: false
-									}
-								}
-							}
-						}
-					}
-				}
-			]
-		}
+	// get responseId
+	const getResponseId = await forms.forms.responses.list({
+		formId: createForm.data.formId
 	})
 
-	// get form
-	await forms.forms.get({
-		formId: formId
-	})
-
-	// list form responses
-	const listFormResponse = await forms.forms.list({
-		formId: formId
-	})
-
-	const responseId = listFormResponse.data.responses[0].responseId
-
-	// get form responses
-	await forms.forms.get({
-		formId: formId,
-		responseId: responseId
-	})
-
-	// update form title
-	await forms.forms.batchUpdate({
-		formId: formId,
-		requestBody: {
-			requests: [
-				{
-					updateFormInfo: {
-						updateMask: '*',
-						info: {
-							title: 'New Form Title'
-						}
-					}
-				}
-			]
-		}
-	})
+	Bun.env.RESPONSE_ID = getResponseId.data.responses[0].responseId
+	Bun.env.FORM_ID = createForm.data.formId
 
 	console.log('BEFOREALL: Setup process')
 })
