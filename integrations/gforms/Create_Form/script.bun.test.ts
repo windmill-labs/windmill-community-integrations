@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test'
 import { main } from './script.bun.ts'
 import { resource } from '../resource.ts'
-import { google } from '@googleapis/forms'
+import google from '@googleapis/forms'
 
 test('Create Form', async () => {
 	// script arguments

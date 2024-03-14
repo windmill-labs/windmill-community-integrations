@@ -1,6 +1,6 @@
 import { beforeAll, afterAll } from 'bun:test'
 import { resource } from './resource.ts'
-import { google } from '@googleapis/forms'
+import google from '@googleapis/forms'
 
 // any sdk setup here if needed
 const forms = google.forms({

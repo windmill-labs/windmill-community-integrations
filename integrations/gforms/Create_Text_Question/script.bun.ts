@@ -1,10 +1,17 @@
-import { google } from '@googleapis/forms'
+import google from '@googleapis/forms'
 
 type Gforms = {
 	token: string
 }
 
-export async function main(resource: Gforms, formId: string, index: number = 0) {
+export async function main(
+	resource: Gforms,
+	formId: string,
+	index: number = 0,
+	title: string,
+	description: string,
+	paragraph: boolean = false
+) {
 	// setup auth
 	const forms = google.forms({
 		version: 'v1',
@@ -23,10 +30,12 @@ export async function main(resource: Gforms, formId: string, index: number = 0) 
 						questionItem: {
 							question: {
 								textQuestion: {
-									paragraph: false
+									paragraph: paragraph
 								}
 							}
-						}
+						},
+						title: title,
+						description: description
 					}
 				}
 			}

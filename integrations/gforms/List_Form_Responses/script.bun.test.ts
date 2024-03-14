@@ -1,7 +1,6 @@
 import { expect, test } from 'bun:test'
 import { main } from './script.bun.ts'
 import { resource } from '../resource.ts'
-import { google } from '@googleapis/forms'
 
 test('List Form Responses', async () => {
 	// script arguments
@@ -13,5 +12,5 @@ test('List Form Responses', async () => {
 	const response = await main(resource, formId)
 
 	// assertions here
-	expect(response.reposonses).toBeDefined()
+	expect(response).toBeEmpty()
 })
