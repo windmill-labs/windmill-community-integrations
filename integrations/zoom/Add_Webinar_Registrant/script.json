@@ -1,0 +1,4 @@
+{
+  "description": "Registers a participant for a webinar. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/webinars/webinarregistrantcreate).",
+  "summary": "Add Webinar Registrant"
+}

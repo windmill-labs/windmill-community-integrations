@@ -1,12 +1,8 @@
-import zoomApi, { type Meeting, type Webinar } from 'zoomapi';
-import { resource } from '../resource';
+import zoomApi from 'zoomapi';
+import type { resource } from '../resource';
 
-export async function main(webinarId: string, webinar: Webinar) {
-    try {
-        const client = zoomApi(resource);
-        const createdMeeting = await client.webinars.ListPastWebinarQA(webinarId);
-        return createdMeeting;
-    } catch (error) {
-        console.log(error);
-    }
+export async function main(resource: resource, webinarId: string) {
+    const client = zoomApi(resource);
+    const createdMeeting = await client.webinars.ListPastWebinarQA(webinarId);
+    return createdMeeting;
 }
