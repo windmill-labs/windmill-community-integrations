@@ -1,0 +1,4 @@
+{
+  "summary": "Get Form Response",
+  "description": "Get a response from a form. [See the documentation](https://developers.google.com/forms/api/reference/rest/v1/forms.responses/get)"
+}

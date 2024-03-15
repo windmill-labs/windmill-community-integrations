@@ -1,0 +1,14 @@
+{
+  "name": "gforms",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@googleapis/forms": "^2.0.5"
+  }
+}
