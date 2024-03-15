@@ -14,21 +14,6 @@ const forms = google.forms({
 })
 
 beforeAll(async () => {
-	// create a form
-	const createForm = await forms.forms.create({
-		requestBody: {
-			info: {
-				title: 'Test Form'
-			}
-		}
-	})
-
-	// get responseId
-	const getResponseId = forms.forms.responses.list({
-		formId: `createForm.data.formId`
-	})
-	Bun.env.RESPONSE_ID = `getResponseId.data.responses[0].responseId`
-	Bun.env.FORM_ID = `createForm.data.formId`
 	console.log('BEFOREALL: Setup process')
 })
 

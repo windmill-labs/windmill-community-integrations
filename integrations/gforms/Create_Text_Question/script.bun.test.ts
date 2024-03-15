@@ -4,8 +4,26 @@ import { resource } from '../resource.ts'
 import google from '@googleapis/forms'
 
 test('Create Text Question', async () => {
+	// setup auth and create new form
+	const auth = new google.auth.OAuth2({})
+	auth.setCredentials({
+		access_token: resource.token
+	})
+	const forms = google.forms({
+		version: 'v1',
+		auth: auth
+	})
+
+	const newForm = await forms.forms.create({
+		requestBody: {
+			info: {
+				title: 'Create Text Question'
+			}
+		}
+	})
+
 	// script arguments
-	const formId = Bun.env.FORM_ID!
+	const formId = newForm.data.formId
 	const index = 0
 	const title = 'Title'
 	const description = 'Description'

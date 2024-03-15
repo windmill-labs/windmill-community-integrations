@@ -1,11 +1,10 @@
 import { expect, test } from 'bun:test'
 import { main } from './script.bun.ts'
 import { resource } from '../resource.ts'
-import google from '@googleapis/forms'
 
 test('Create Form', async () => {
 	// script arguments
-	const title = 'Test Form'
+	const title = 'Create Form'
 	console.log(`TEST: Will test Create Form with arguments: ${title}`)
 
 	// calling main

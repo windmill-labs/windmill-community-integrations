@@ -1,11 +1,29 @@
 import { expect, test } from 'bun:test'
 import { main } from './script.bun.ts'
 import { resource } from '../resource.ts'
-import { google } from 'googleapis'
+import google from '@googleapis/forms'
 
 test('Get Form', async () => {
+	// setup auth and create new form
+	const auth = new google.auth.OAuth2({})
+	auth.setCredentials({
+		access_token: resource.token
+	})
+	const forms = google.forms({
+		version: 'v1',
+		auth: auth
+	})
+
+	const newForm = await forms.forms.create({
+		requestBody: {
+			info: {
+				title: 'Get Form'
+			}
+		}
+	})
+
 	// script arguments
-	const formId = Bun.env.FORM_ID!
+	const formId = newForm.data.formId
 	console.log(`TEST: Will test Get Form with arguments: ${formId}`)
 
 	// calling main
