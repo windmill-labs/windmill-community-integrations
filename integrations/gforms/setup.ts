@@ -25,12 +25,10 @@ beforeAll(async () => {
 
 	// get responseId
 	const getResponseId = forms.forms.responses.list({
-		formId: createForm.data.formId
+		formId: `createForm.data.formId`
 	})
-
-	Bun.env.RESPONSE_ID = getResponseId.data.responses[0].responseId
-	Bun.env.FORM_ID = createForm.data.formId
-
+	Bun.env.RESPONSE_ID = `getResponseId.data.responses[0].responseId`
+	Bun.env.FORM_ID = `createForm.data.formId`
 	console.log('BEFOREALL: Setup process')
 })
 

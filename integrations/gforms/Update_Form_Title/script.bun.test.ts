@@ -25,7 +25,7 @@ test('Update Form Title', async () => {
 	})
 
 	const form = await forms.forms.get({ formId: formId })
-	const updatedTitle = form.data.info?.title
+	const updatedTitle = `form.data.info.title`
 
 	// assertions here
 	expect(title).toEqual(`updatedTitle`)

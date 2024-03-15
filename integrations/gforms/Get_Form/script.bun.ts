@@ -1,4 +1,4 @@
-import { google } from 'googleapis'
+import google from '@googleapis/forms'
 
 type Gforms = {
 	token: string
