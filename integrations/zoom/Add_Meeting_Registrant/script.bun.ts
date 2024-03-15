@@ -1,7 +1,7 @@
 import zoomApi from 'zoomapi';
 import type { resource } from '../resource';
 
-export type Registrant = {
+export async function main(resource: resource, userId: string, registrant: {
     id?: string;
     email: string;
     first_name: string;
@@ -19,22 +19,17 @@ export type Registrant = {
     role_in_purchase_process?: string;
     no_of_employees?: string;
     comments?: string;
-    custom_questions?: Question[];
-    status?: RegistrantStatus;
+    custom_questions?: {
+        title: string;
+        value?: string;
+    }[];
+    status?: 'approved' | 'pending' | 'denied'
     create_time?: string;
     join_url?: string;
-};
-
-export type RegistrantStatus = 'approved' | 'pending' | 'denied';
-
-export type Question = {
-    title: string;
-    value?: string;
-};
-
-export async function main(resource: resource, userId: string, registrant: Registrant) {
+}) {
     const client = zoomApi(resource);
     const createdMeeting = await client.meetings.AddRegistrant(userId, registrant);
     return createdMeeting;
 }
+
 

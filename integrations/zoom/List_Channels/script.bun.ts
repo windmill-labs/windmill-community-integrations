@@ -1,13 +1,12 @@
 import zoomApi, { type ListChannelMembersResponse } from 'zoomapi';
 import type { resource } from '../resource';
 
-export type ListChannelMembersParams = {
+
+export async function main(resource: resource, channelParams: {
     channel_id: string;
     page_size?: number;
     next_page_token?: string;
-};
-
-export async function main(resource: resource, channelParams: ListChannelMembersParams) {
+}) {
     const client = zoomApi(resource);
     let nextPageToken: string | undefined;
     let allMembers: ListChannelMembersResponse['members'] = [];
