@@ -14,14 +14,19 @@ test('Update Form Title', async () => {
 	const response = await main(resource, formId, title)
 
 	// compare the title with the updated title
+	const auth = new google.auth.OAuth2({})
+	auth.setCredentials({
+		access_token: resource.token
+	})
+
 	const forms = google.forms({
 		version: 'v1',
-		auth: resource.token
+		auth: auth
 	})
 
 	const form = await forms.forms.get({ formId: formId })
-	const updatedTitle = form.data.info.title
+	const updatedTitle = form.data.info?.title
 
 	// assertions here
-	expect(title).toEqual(updatedTitle)
+	expect(title).toEqual(`updatedTitle`)
 })

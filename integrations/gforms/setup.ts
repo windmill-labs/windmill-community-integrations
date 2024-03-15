@@ -3,9 +3,14 @@ import { resource } from './resource.ts'
 import google from '@googleapis/forms'
 
 // any sdk setup here if needed
+const auth = new google.auth.OAuth2({})
+auth.setCredentials({
+	access_token: resource.token
+})
+
 const forms = google.forms({
 	version: 'v1',
-	auth: resource.token
+	auth: auth
 })
 
 beforeAll(async () => {
@@ -19,7 +24,7 @@ beforeAll(async () => {
 	})
 
 	// get responseId
-	const getResponseId = await forms.forms.responses.list({
+	const getResponseId = forms.forms.responses.list({
 		formId: createForm.data.formId
 	})
 
