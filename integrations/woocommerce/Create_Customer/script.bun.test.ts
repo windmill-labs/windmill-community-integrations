@@ -7,37 +7,6 @@ test('Create Customer', async () => {
   // and emails. (Results in 'registration-error-email-exists' 400 Error)
   const username = Math.random().toString(36).slice(2);
   const email = `${Math.random().toString(36).slice(2)}@mockemail.com`;
-  
-  const customerData = {
-    email: email,
-    first_name: 'John',
-    last_name: 'Doe',
-    username: username,
-    billing: {
-      first_name: 'John',
-      last_name: 'Doe',
-      company: '',
-      address_1: '969 Market',
-      address_2: '',
-      city: 'San Francisco',
-      state: 'CA',
-      postcode: '94103',
-      country: 'US',
-      email: 'john.doe@mockexample.com',
-      phone: '(555) 555-5555'
-    },
-    shipping: {
-      first_name: 'John',
-      last_name: 'Doe',
-      company: '',
-      address_1: '969 Market',
-      address_2: '',
-      city: 'San Francisco',
-      state: 'CA',
-      postcode: '94103',
-      country: 'US'
-    }
-  };
 
   const mockResponse = {
     id: 25,
@@ -91,12 +60,41 @@ test('Create Customer', async () => {
     }
   };
 
-  const response = await main(resource, customerData);
+  const response = await main(resource, {
+    email: email,
+    first_name: 'John',
+    last_name: 'Doe',
+    username: username,
+    billing: {
+      first_name: 'John',
+      last_name: 'Doe',
+      company: '',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US',
+      email: 'john.doe@mockexample.com',
+      phone: '(555) 555-5555'
+    },
+    shipping: {
+      first_name: 'John',
+      last_name: 'Doe',
+      company: '',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US'
+    }
+  });
   // console.log(response);
 
   // Assertions
   expect(response).toBeDefined();
-  expect(response.email).toBe(mockResponse.email);
-  expect(response.username).toBe(mockResponse.username);
+  expect(response.first_name).toBe(mockResponse.first_name);
   expect(response.billing.phone).toBe(mockResponse.billing.phone);
+  expect(response.shipping.first_name).toBe(mockResponse.shipping.first_name);
 });

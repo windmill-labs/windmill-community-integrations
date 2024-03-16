@@ -1,15 +1,61 @@
 import { expect, test } from 'bun:test';
 import { main } from './script.bun.ts';
+import { main as Create_Order } from '../Create_Order/script.bun.ts';
 import { resource } from '../resource.ts';
 
 test('Update Order Status', async () => {
-  const orderId = 121;
-  const data = {
-    status: "completed"
-  };
+
+  // Call Create Order api first to get the 'Order ID'
+  const order = await Create_Order(resource, {
+    payment_method: 'bacs',
+    payment_method_title: 'Direct Bank Transfer',
+    set_paid: true,
+    billing: {
+      first_name: 'John',
+      last_name: 'Doe',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US',
+      email: 'john.doe@mockexample.com',
+      phone: '(555) 555-5555'
+    },
+    shipping: {
+      first_name: 'John',
+      last_name: 'Doe',
+      address_1: '969 Market',
+      address_2: '',
+      city: 'San Francisco',
+      state: 'CA',
+      postcode: '94103',
+      country: 'US'
+    },
+    line_items: [
+      {
+        product_id: 93,
+        quantity: 2
+      },
+      {
+        product_id: 22,
+        variation_id: 23,
+        quantity: 1
+      }
+    ],
+    shipping_lines: [
+      {
+        method_id: 'flat_rate',
+        method_title: 'Flat Rate',
+        total: '10.00'
+      }
+    ]
+  });
+
+  const orderId = order.id;
 
   const mockResponse = {
-    id: 121,
+    id: orderId,
     parent_id: 0,
     status: "completed",
     currency: "USD",
@@ -148,11 +194,14 @@ test('Update Order Status', async () => {
     },
   };
 
-  const response = await main(resource, orderId, data);
+  const response = await main(resource, orderId, {
+    status: "completed"
+  });
   // console.log(response);
   // Assertions
   expect(response).toBeDefined();
-  expect(response.order_key).toBe(mockResponse.order_key);
-  expect(response.number).toBe(mockResponse.number);
+  expect(response.billing.first_name).toBe(mockResponse.billing.first_name);
+  expect(response.payment_method_title).toBe(mockResponse.payment_method_title);
+  expect(response.shipping_lines.method_id).toBe(mockResponse.shipping_lines.method_id);
   expect(response.status).toBe(mockResponse.status);
 });

@@ -8,28 +8,18 @@ type WooCommerce = {
   queryStringAuth?: boolean;
 };
 
-type ProductData = {
-  name: string;
-  type: 'simple' | 'variable';
-  regular_price?: string;
-  description?: string;
-  short_description?: string;
-  categories?: { id: number }[];
-  images?: { src: string }[];
-  attributes?: {
-    id: number;
-    position: number;
-    visible: boolean;
-    variation: boolean;
-    options: string[];
-  }[];
-  default_attributes?: {
-    id: number;
-    option: string;
-  }[];
-};
-
-export async function main(resource: WooCommerce, product: ProductData) {
+export async function main(
+  resource: WooCommerce,
+  product: {
+    name: string;
+    type: string;
+    regular_price: string;
+    description: string;
+    short_description: string;
+    categories: { id: number }[];
+    images: { src: string }[];
+  }
+) {
   const WooCommerce = new WooCommerceRestApi({
     url: resource.url,
     consumerKey: resource.consumerKey,
@@ -45,6 +35,6 @@ export async function main(resource: WooCommerce, product: ProductData) {
     return {
       error: true,
       message: error.response.data || 'Internal Server Error',
-    }
+    };
   }
 }

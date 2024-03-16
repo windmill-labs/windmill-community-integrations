@@ -8,55 +8,46 @@ type WooCommerce = {
   queryStringAuth?: boolean;
 };
 
-type OrderData = {
-  payment_method: string;
-  payment_method_title: string;
-  set_paid: boolean;
-  billing: BillingAddress;
-  shipping: ShippingAddress;
-  line_items: LineItem[];
-  shipping_lines: ShippingLine[];
-};
-
-type BillingAddress = {
-  first_name: string;
-  last_name: string;
-  company: string;
-  address_1: string;
-  address_2: string;
-  city: string;
-  state: string;
-  postcode: string;
-  country: string;
-  email: string;
-  phone: string;
-};
-
-type ShippingAddress = {
-  first_name: string;
-  last_name: string;
-  company: string;
-  address_1: string;
-  address_2: string;
-  city: string;
-  state: string;
-  postcode: string;
-  country: string;
-};
-
-type LineItem = {
-  product_id: number;
-  quantity: number;
-  variation_id?: number;
-};
-
-type ShippingLine = {
-  method_id: string;
-  method_title: string;
-  total: string;
-};
-
-export async function main(resource: WooCommerce, order: OrderData) {
+export async function main(
+  resource: WooCommerce,
+  order: {
+    payment_method: string;
+    payment_method_title: string;
+    set_paid: boolean;
+    billing: {
+      first_name: string;
+      last_name: string;
+      address_1: string;
+      address_2: string;
+      city: string;
+      state: string;
+      postcode: string;
+      country: string;
+      email: string;
+      phone: string;
+    };
+    shipping: {
+      first_name: string;
+      last_name: string;
+      address_1: string;
+      address_2: string;
+      city: string;
+      state: string;
+      postcode: string;
+      country: string;
+    };
+    line_items: {
+      product_id: number;
+      variation_id?: number;
+      quantity: number;
+    }[];
+    shipping_lines: {
+      method_id: string;
+      method_title: string;
+      total: string;
+    }[];
+  }
+) {
   const WooCommerce = new WooCommerceRestApi({
     url: resource.url,
     consumerKey: resource.consumerKey,

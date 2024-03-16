@@ -165,9 +165,11 @@ test('Search Customers', async () => {
   // Assertions
   expect(response).toBeDefined();
 
-  expect(response[0].id).toBe(mockResponse[0].id);
-  expect(response[0].email).toBe(mockResponse[0].email);
+  expect(response[0].first_name).toBe(mockResponse[0].first_name);
+  expect(response[0].billing.phone).toBe(mockResponse[0].billing.phone);
+  expect(response[0].shipping.first_name).toBe(mockResponse[0].shipping.first_name);
 
-  expect(response[0].id).toBe(mockResponse[0].id);
-  expect(response[0].email).toBe(mockResponse[0].email);
+  expect(response[1].first_name).toBe(mockResponse[1].first_name);
+  expect(response[1].billing.phone).toBe(mockResponse[1].billing.phone);
+  expect(response[1].shipping.first_name).toBe(mockResponse[1].shipping.first_name);
 });

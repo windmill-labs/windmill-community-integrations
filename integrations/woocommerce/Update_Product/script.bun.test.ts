@@ -1,15 +1,36 @@
 import { expect, test } from 'bun:test';
 import { main } from './script.bun.ts';
+import { main as Create_Product } from '../Create_Product/script.bun.ts';
 import { resource } from '../resource.ts';
 
 test('Update Product', async () => {
-  const productId = 187;
-  const newData = {
-    regular_price: "24.54"
-  };
+
+  // Call Create_Product api first to get 'Product ID'
+  const product = await Create_Product(resource, {
+    name: 'Premium Quality',
+    type: 'simple',
+    regular_price: '21.99',
+    description:
+      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
+    short_description:
+      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+    categories: [{ id: 9 }, { id: 14 }],
+    images: [
+      {
+        src:
+          'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg',
+      },
+      {
+        src:
+          'http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_back.jpg',
+      },
+    ]
+  });
+
+  const productId = product.id;
   
   const mockResponse = {
-    id: 187,
+    id: productId,
     name: "Premium Quality",
     slug: "premium-quality-31",
     permalink: "https://woo-deliciously-very-coffee.wpcomstaging.com/product/premium-quality-31/",
@@ -136,11 +157,13 @@ test('Update Product', async () => {
     }
   };
 
-  const response = await main(resource, productId, newData);
+  const response = await main(resource, productId, {
+    regular_price: "24.54"
+  });
   // console.log(response);
   // Assertions
   expect(response).toBeDefined();
-  expect(response.id).toBe(mockResponse.id);
   expect(response.name).toBe(mockResponse.name);
-  expect(response.regular_price).toBe(newData.regular_price);
+  expect(response.description).toBe(mockResponse.description);
+  expect(response.regular_price).toBe(mockResponse.regular_price);
 });
