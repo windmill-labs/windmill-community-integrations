@@ -1,0 +1,4 @@
+{
+  "summary": "Search Post",
+  "description": "Search posts by title. [See the docs here](https://www.reddit.com/dev/api/#GET_search)"
+}
