@@ -4,18 +4,12 @@ type WooCommerce = {
   url: string;
   consumerKey: string;
   consumerSecret: string;
-  version: string;
+  version?: string;
   queryStringAuth?: boolean;
 };
 
 export async function main(resource: WooCommerce, productId: number, updatePayload: any) {
-  const WooCommerce = new WooCommerceRestApi({
-    url: resource.url,
-    consumerKey: resource.consumerKey,
-    consumerSecret: resource.consumerSecret,
-    version: resource.version,
-    queryStringAuth: resource.queryStringAuth,
-  });
+  const WooCommerce = new WooCommerceRestApi(resource);
 
   try {
     const response = await WooCommerce.put(`products/${productId}`, updatePayload);
