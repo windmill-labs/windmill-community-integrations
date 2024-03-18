@@ -1,0 +1,4 @@
+{
+  "summary": "Create Customer",
+  "description": "Creates a new customer. [See the docs](https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#create-a-customer)"
+}
