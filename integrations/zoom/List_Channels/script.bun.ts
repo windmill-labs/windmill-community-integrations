@@ -1,23 +1,23 @@
-import zoomApi, { type ListChannelMembersResponse } from 'zoomapi';
+import zoomApi, { type ListUserChannelsResponse } from 'zoomapi';
 import type { resource } from '../resource';
 
 
 export async function main(resource: resource, channelParams: {
-    channel_id: string;
+    userId: string;
     page_size?: number;
     next_page_token?: string;
 }) {
     const client = zoomApi(resource);
     let nextPageToken: string | undefined;
-    let allMembers: ListChannelMembersResponse['members'] = [];
+    let allChannels: ListUserChannelsResponse['channels'] = [];
 
     do {
         const params = nextPageToken ? { next_page_token: nextPageToken } : {};
-        const response = await client.chat.ListChannelMembers({ ...channelParams, ...params });
-        allMembers = allMembers.concat(response.members);
+        const response = await client.chat.ListUserChannels({ ...channelParams, ...params });
+        allChannels = allChannels.concat(response.channels);
         nextPageToken = response.next_page_token;
     } while (nextPageToken);
 
-    return { members: allMembers };
+    return { channels: allChannels };
 }
 
