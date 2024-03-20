@@ -9,6 +9,6 @@
   },
   "type": "module",
   "dependencies": {
-    "zoomapi": "npm:zoomapi-neo773"
+    "zoomapi": "^2.2.0"
   }
 }
