@@ -1,5 +1,11 @@
 import zoomApi, { type GetMeetingParticipantReportsResponse } from 'zoomapi';
-import type { resource } from '../resource';
+
+type resource = {
+    accountId: string
+    oauthClientId: string
+    oauthClientSecret: string
+    webhookSecretToken: string
+} 
 
 export async function main(resource: resource, meetingId: string) {
     const client = zoomApi(resource);
