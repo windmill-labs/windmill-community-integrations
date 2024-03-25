@@ -1,6 +1,6 @@
 import zoomApi, { type GetMeetingParticipantReportsResponse } from 'zoomapi';
 
-type resource = {
+type Zoom = {
     accountId: string
     oauthClientId: string
     oauthClientSecret: string
