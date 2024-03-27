@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 } 
 
-export async function main(resource: resource, userid: string) {
+export async function main(resource: Zoom, userid: string) {
     const client = zoomApi(resource);
     const createdUser = await client.users.GetUser(userid);
     return createdUser;

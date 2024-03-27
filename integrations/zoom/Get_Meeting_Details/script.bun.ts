@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 } 
 
-export async function main(resource: resource, meetingId: string) {
+export async function main(resource: Zoom, meetingId: string) {
     const client = zoomApi(resource);
     const meeting = await client.meetings.GetMeeting(meetingId);
     return meeting;

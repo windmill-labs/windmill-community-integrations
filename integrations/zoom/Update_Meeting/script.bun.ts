@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 }
 
-export async function main(resource: resource, meetingId: string, meeting: {
+export async function main(resource: Zoom, meetingId: string, meeting: {
     uuid?: string;
     id?: string;
     host_id?: string;

@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 }
 
-export async function main(resource: resource, channelParams: {
+export async function main(resource: Zoom, channelParams: {
     userId: string;
     page_size?: number;
     next_page_token?: string;

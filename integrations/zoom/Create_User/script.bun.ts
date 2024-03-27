@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 } 
 
-export async function main(resource: resource, user: {
+export async function main(resource: Zoom, user: {
     action: 'create' | 'autoCreate' | 'custCreate' | 'ssoCreate';
     user_info?: {
         email: string;

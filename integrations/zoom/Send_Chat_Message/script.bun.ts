@@ -7,7 +7,7 @@ type Zoom = {
     webhookSecretToken: string
 } 
 
-export async function main(resource: resource, chatParams: {
+export async function main(resource: Zoom, chatParams: {
     at_items: {
         at_contact: string;
         at_type: number;
