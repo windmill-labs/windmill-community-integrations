@@ -51,10 +51,16 @@ Once you're done, create a PR with all the files apart from `.env` (which should
 ## Desired integrations
 
 - Zoom
-- Gforms
-- Typeform
-- Reddit
-- WooCommerce
+- Gforms (v)
+- Typeform (v)
+- Reddit (v)
+- WooCommerce (v)
+- Accelo
+- Mailgun
+- Todoist
+- GCloud
+- LinkedIn
+- Pushover
 
 ## Desired OpenAPI integrations
 
@@ -66,6 +72,19 @@ Once you're done, create a PR with all the files apart from `.env` (which should
 - [smartsheet](blob:https://smartsheet.redoc.ly/48102eb8-af78-4edc-a31f-420228a5a198)
 - [Splitwise](https://raw.githubusercontent.com/splitwise/api-docs/main/splitwise.yaml)
 - [Supabase](https://api.supabase.com/api/v1-json)
+- [Gitlab](https://gitlab.com/gitlab-org/gitlab/-/blob/master/doc/api/openapi/openapi.yaml)
+- [Pipedrive](https://developers.pipedrive.com/docs/api/v1/openapi.yaml)
+- [Microsoft graph](https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml)
+- [Kraken](https://docs.kraken.com/rest/)
+
+## Postman collections
+- Zoho
+- Paypal
+- Salesforce
+- Clickup
+- ActiveCampaign
+- Calendly
+- Segment API
 
 ## Contributing guide
 
