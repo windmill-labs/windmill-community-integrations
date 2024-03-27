@@ -231,50 +231,50 @@
     Inserts rows into a BigQuery table. [See the docs](https://github.com/googleapis/nodejs-bigquery)
     and for an example [here](https://github.com/googleapis/nodejs-bigquery/blob/main/samples/insertRowsAsStream.js).
   id: bigquery-insert-rows
-  integration: google_cloud
+  integration: gcloud
   name: Bigquery Insert Rows
 - description: Creates a bucket on Google Cloud Storage [See the docs](https://googleapis.dev/nodejs/storage/latest/Bucket.html#create)
   id: create-bucket
-  integration: google_cloud
+  integration: gcloud
   name: Create Bucket
 - description: Creates a scheduled query in Google Cloud. [See the documentation](https://cloud.google.com/bigquery/docs/scheduling-queries)
   id: create-scheduled-query
-  integration: google_cloud
+  integration: gcloud
   name: Create Scheduled Query
 - description: Gets Google Cloud Storage bucket metadata. [See the docs](https://googleapis.dev/nodejs/storage/latest/Bucket.html#getMetadata).
   id: get-bucket
-  integration: google_cloud
+  integration: gcloud
   name: Get Bucket Metadata
 - description: Downloads an object from a Google Cloud Storage bucket, [See the docs](https://googleapis.dev/nodejs/storage/latest/File.html#get)
   id: get-object
-  integration: google_cloud
+  integration: gcloud
   name: Get Object
 - description: List Google Cloud Storage buckets, [See the docs](https://googleapis.dev/nodejs/storage/latest/Storage.html#getBuckets)
   id: list-buckets
-  integration: google_cloud
+  integration: gcloud
   name: List Buckets
 - description: Writes log data to the Logging service, [See the docs](https://cloud.google.com/nodejs/docs/reference/logging/latest/logging/log#_google_cloud_logging_Log_write_member_1_)
   id: logging-write-log
-  integration: google_cloud
+  integration: gcloud
   name: Logging - Write Log
 - description:
     Runs a query in BigQuery. [See the documentation](https://cloud.google.com/bigquery/docs/running-queries#node.js)
     for more information.
   id: run-query
-  integration: google_cloud
+  integration: gcloud
   name: Run Query
 - description: Search objects by a prefix, [See the docs](https://googleapis.dev/nodejs/storage/latest/Bucket.html#getFiles)
   id: search-objects
-  integration: google_cloud
+  integration: gcloud
   name: Search Objects
 - description: Switch a virtual machine instance boot status to start or stop it.
     [See the documentation](https://cloud.google.com/compute/docs/instances/stop-start-instance)
   id: switch-instance-boot-status
-  integration: google_cloud
+  integration: gcloud
   name: Switch Instance Boot Status
 - description: Upload an object to a Google Cloud Storage bucket, [See the docs](https://googleapis.dev/nodejs/storage/latest/Bucket.html#upload)
   id: upload-object
-  integration: google_cloud
+  integration: gcloud
   name: Upload An Object
 - description: Create a comment on a share or user generated content post. [See the
     docs here](https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment)
