@@ -4,8 +4,8 @@ import { resource } from '../resource.ts'
 
 describe('Zoom Delete User', () => {
     it('should delete user', async () => {
-        const userid = process.env.ZOOM_USERID!
+        const userid = process.env.ZOOM_DELETE_USER_ID!
         const user = await main(resource, userid);
-        expect(() => user).not.toThrow();
+        expect(user).toBeObject()
     });
 });
