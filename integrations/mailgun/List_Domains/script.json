@@ -1,0 +1,4 @@
+{
+  "summary": "List Domains",
+  "description": "List domains in Mailgun. [See the docs here](https://documentation.mailgun.com/en/latest/api-domains.html#domains)"
+}

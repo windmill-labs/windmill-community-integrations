@@ -1,0 +1,4 @@
+{
+  "summary": "Get Mailing List Members",
+  "description": "List all mailing list members. [See the docs here](https://documentation.mailgun.com/en/latest/api-mailinglists.html#mailing-lists)"
+}

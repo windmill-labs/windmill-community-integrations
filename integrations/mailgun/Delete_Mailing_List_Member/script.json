@@ -1,0 +1,4 @@
+{
+  "summary": "Delete Mailing List Member",
+  "description": "Delete a mailing list member by address. [See the docs here](https://documentation.mailgun.com/en/latest/api-mailinglists.html#mailing-lists)"
+}

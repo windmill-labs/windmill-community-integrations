@@ -1,0 +1,4 @@
+{
+  "summary": "Verify Email",
+  "description": "Verify email address deliverability with Mailgun. [See the docs here](https://documentation.mailgun.com/en/latest/api-email-validation.html)"
+}
