@@ -1,0 +1,22 @@
+{
+	"description": "{resource type description}",
+	"schema": {
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"type": "object",
+		"properties": {
+			"apiKey": {
+				"type": "string",
+				"description": "API key of Mailgun"
+			},
+			"domain": {
+				"type": "string",
+				"description": "The domain to perform the action on"
+			},
+			"baseUrl": {
+				"type": "string",
+				"description": "Base URL of the Mailgun API. Defaults to https://api.mailgun.net/v3/"
+			}
+		},
+		"required": ["apiKey", "domain"]
+	}
+}

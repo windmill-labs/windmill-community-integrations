@@ -1,0 +1,4 @@
+{
+  "summary": "Send Email",
+  "description": "Send email with Mailgun. [See the docs here](https://documentation.mailgun.com/en/latest/api-sending.html#sending)"
+}
