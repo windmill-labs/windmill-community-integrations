@@ -1,0 +1,4 @@
+{
+  "description": "Disassociates (unlinks) a user from the associated account or permanently deletes a user.",
+  "summary": "Delete User"
+}

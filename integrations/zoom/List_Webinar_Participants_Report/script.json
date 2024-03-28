@@ -1,0 +1,4 @@
+{
+    "description": "Retrieves detailed report on each webinar attendee. You can get webinar participant reports for the last 6 months. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/reportWebinarParticipants).",
+    "summary": "List Webinar Participants Report"
+}

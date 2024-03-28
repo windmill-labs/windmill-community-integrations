@@ -1,0 +1,4 @@
+{
+  "description": "Gets details of a scheduled webinar. [See the docs here](https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#operation/webinar).",
+  "summary": "Get Webinar Details"
+}

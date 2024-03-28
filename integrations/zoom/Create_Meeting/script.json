@@ -1,0 +1,4 @@
+{
+  "description": "Creates a meeting for a user. A maximum of 100 meetings can be created for a user in a day.",
+  "summary": "Create Meeting"
+}
